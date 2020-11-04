@@ -4,6 +4,7 @@ public class SudokuSolver {
 
     private boolean solve(int[][] board, int counter){
 
+
         int col = counter / board.length;
         int row = counter % board.length;
 
