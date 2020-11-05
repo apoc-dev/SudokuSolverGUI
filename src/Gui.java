@@ -1,6 +1,6 @@
 import java.util.ArrayList;
-import java.util.concurrent.*;
-
+import javafx.animation.PauseTransition;
+import java.util.*;
 import javafx.application.Application;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
@@ -11,6 +11,7 @@ import javafx.scene.text.TextBoundsType;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.scene.paint.*;
+import javafx.util.Duration;
 
 public class Gui extends Application{
     
@@ -36,7 +37,6 @@ public class Gui extends Application{
         scene.setOnKeyPressed(new EventHandler<KeyEvent>(){
             
             public void handle(final KeyEvent keyEvent){
-                System.out.println("event triggered");
                 handleEvent(keyEvent);
             }
             
@@ -106,13 +106,21 @@ public class Gui extends Application{
         {5,0,4,0,0,0,0,0,1}};
         
         
-        SudokuSolver sudokuSolver = new SudokuSolver();
+        new Thread() {
+            public void run() {
+                SudokuSolver sudokuSolver = new SudokuSolver();
+                sudokuSolver.startSolving(board);
+            }
+        }.start();
         
+        
+        /*
         if(!sudokuSolver.startSolving(board)){
             System.out.println("No solution");
         }else{
             System.out.println("Solved");
         }
+        */
     }
 
 

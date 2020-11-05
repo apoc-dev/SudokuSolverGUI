@@ -1,9 +1,15 @@
+import javafx.application.Platform;
 import javafx.scene.paint.*;
 
 public class SudokuSolver {
 
     private boolean solve(int[][] board, int counter){
 
+        try {
+            Thread.sleep(10);
+        } catch (Exception e) {
+            //TODO: handle exception
+        }
 
         int col = counter / board.length;
         int row = counter % board.length;
@@ -18,7 +24,7 @@ public class SudokuSolver {
 
             if (isValid(n,row,col, board)){
                 board[row][col] = n;
-                setGui(false, counter, n);
+                setGui(false, false, counter, n);
 
                 if (solve(board,counter+1)){
                     return true;
@@ -26,11 +32,11 @@ public class SudokuSolver {
 
             }
             board[row][col] = 0;
-            setGui(true, counter, n);
+            setGui(false, true, counter, n);
 
         }
         }else{
-            setGui(false, counter, board[row][col]);
+            setGui(true, false, counter, board[row][col]);
             return solve(board, counter + 1);
         }
 
@@ -99,14 +105,25 @@ public class SudokuSolver {
         System.out.println();
     }
 
-    private void setGui(boolean wrong, int pos, int number){
+    private void setGui(boolean given,boolean wrong, int pos, int number){
         String s = Integer.toString(number);
         Color color = Color.GREEN;
         if(wrong){
             color = Color.RED;
         }
-        Gui.setColorOfRect(color, pos);
-        Gui.setTextOfRect(s, pos);
+        if(given){
+            color = Color.BLUE;
+        }
+        final Color fColor = color;
+
+        Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
+                Gui.setTextOfRect(s, pos);
+                Gui.setColorOfRect(fColor, pos);
+            }
+        });        
+        
     }
 
 
