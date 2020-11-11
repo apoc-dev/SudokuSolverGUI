@@ -14,38 +14,7 @@
             "request": "launch",
             "vmArgs": "--module-path lib/javafx-sdk-11.0.2/lib --add-modules javafx.controls,javafx.fxml",
             "mainClass": "Gui",
-            "projectName": "SudokuSolverGUI_e39c4a0e"
+            "projectName": "SudokuSolverGUI_1d2735ac"
         },
-        {
-            "type": "java",
-            "name": "CodeLens (Launch) - Gui",
-            "request": "launch",
-            "vmArgs": "--module-path lib/javafx-sdk-11.0.2/lib --add-modules javafx.controls,javafx.fxml",
-            "mainClass": "Gui",
-            "projectName": "SudokuSolverGUI_efd14491"
-        },
-        {
-            "type": "java",
-            "name": "CodeLens (Launch) - SudokuSolver",
-            "request": "launch",
-            "vmArgs": "--module-path lib/javafx-sdk-11.0.2/lib --add-modules javafx.controls,javafx.fxml",
-            "mainClass": "SudokuSolver",
-            "projectName": "SudokuSolverGUI_d41be38f"
-        },
-        {
-            "type": "java",
-            "name": "Debug (Launch) - Current File",
-            "request": "launch",
-            "vmArgs": "--module-path lib/javafx-sdk-11.0.2/lib --add-modules javafx.controls,javafx.fxml",
-            "mainClass": "${file}"
-        },
-        {
-            "type": "java",
-            "name": "Debug (Launch)-Gui<SudokuSolverGUI_d41be38f>",
-            "request": "launch",
-            "vmArgs": "--module-path lib/javafx-sdk-11.0.2/lib --add-modules javafx.controls,javafx.fxml",
-            "mainClass": "Gui",
-            "projectName": "SudokuSolverGUI_d41be38f"
-        }
     ]
 }

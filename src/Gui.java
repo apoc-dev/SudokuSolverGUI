@@ -1,6 +1,5 @@
 import java.util.ArrayList;
-import javafx.animation.PauseTransition;
-import java.util.*;
+
 import javafx.application.Application;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
@@ -11,14 +10,13 @@ import javafx.scene.text.TextBoundsType;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.scene.paint.*;
-import javafx.util.Duration;
 
 public class Gui extends Application{
     
 
     static ArrayList<Rectangle> rects = new ArrayList<>();
     static ArrayList<Text> texts = new ArrayList<>();
-
+    private int[][] board;
     @Override
     public void start(Stage stage) {
 
@@ -33,6 +31,7 @@ public class Gui extends Application{
             pane.getChildren().addAll(rects.get(box), texts.get(box));
         }
 
+        prepareSudokuSOlver();
 
         scene.setOnKeyPressed(new EventHandler<KeyEvent>(){
             
@@ -91,10 +90,8 @@ public class Gui extends Application{
 
         return text;
     }
-
-    private void callSudokuSolver(){
-        //test
-        int[][] board =
+    private void prepareSudokuSOlver(){
+        board = new int[][]
         {{2,0,5,0,0,0,0,0,0},
         {3,0,8,6,0,0,9,0,0},
         {0,0,0,1,0,0,4,0,0},
@@ -105,6 +102,11 @@ public class Gui extends Application{
         {0,0,6,0,0,3,0,0,5},
         {5,0,4,0,0,0,0,0,1}};
         
+        prepareGui(board);
+    }
+    private void callSudokuSolver(){
+        //test
+
         
         new Thread() {
             public void run() {
@@ -113,16 +115,21 @@ public class Gui extends Application{
             }
         }.start();
         
-        
-        /*
-        if(!sudokuSolver.startSolving(board)){
-            System.out.println("No solution");
-        }else{
-            System.out.println("Solved");
-        }
-        */
     }
 
+    public static void prepareGui(int[][] board){
+        for (int row = 0; row < board.length; row++) {
+            for (int col = 0; col < board.length; col++) {
+                if(board[row][col] != 0){
+
+                    int pos = (col * board.length) + row;
+                    setColorOfRect(Color.BLUE, pos);
+                    setTextOfRect(Integer.toString(board[row][col]), pos);
+                
+                }
+            }
+        }
+    }
 
     public static void main(String[] args) throws Exception {
         launch();

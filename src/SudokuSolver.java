@@ -2,11 +2,12 @@ import javafx.application.Platform;
 import javafx.scene.paint.*;
 
 public class SudokuSolver {
+    int slowdown = 10;
 
     private boolean solve(int[][] board, int counter){
 
         try {
-            Thread.sleep(10);
+            Thread.sleep(slowdown);
         } catch (Exception e) {
             //TODO: handle exception
         }
@@ -32,7 +33,7 @@ public class SudokuSolver {
 
             }
             board[row][col] = 0;
-            setGui(false, true, counter, n);
+            setGui(false, true, counter, 0);
 
         }
         }else{
