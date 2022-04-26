@@ -59,8 +59,8 @@ public class Gui extends Application{
 
                 Rectangle r = new Rectangle(x, y, 32, 32);
                 Text   text   = createText("0");
-                text.setX(x);
-                text.setY(y+32);
+                text.setX(x+10);
+                text.setY(y+18);
                 r.setFill(Color.WHITE);
                 r.setStroke(Color.BLACK);
                 r.setOpacity(0.5);

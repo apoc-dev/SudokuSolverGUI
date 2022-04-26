@@ -2,7 +2,7 @@ import javafx.application.Platform;
 import javafx.scene.paint.*;
 
 public class SudokuSolver {
-    int slowdown = 10;
+    int slowdown = 1;
 
     private boolean solve(int[][] board, int counter){
 
